@@ -12,6 +12,8 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (gameCounter >= 5) {
+        playerScore = 0;
+        computerScore = 0;
         gameCounter = 0;
         while (resultsContainer.firstChild) {
             resultsContainer.removeChild(resultsContainer.lastChild);
