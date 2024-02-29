@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scripts/main.js" defer></script>
+    <style>
+        #gameContainer {
+            width: 90vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: top;
+        }
+        #buttonContainer {
+            display: inline;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
-    <script src="scripts/main.js"></script>
+<div id="gameContainer">
+    <div id="resultsContainer"></div>
+    <div id="buttonContainer">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+</div>
 </body>
 </html>
