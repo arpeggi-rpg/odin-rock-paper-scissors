@@ -51,25 +51,48 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+const selColour = function (sel) {
+    switch (sel) {
+        case 'rock':
+            return 'red';
+        case 'paper':
+            return 'orange';
+        default:
+            return 'deepskyblue';
+    }
+}
+
 const displayResults = function (gameResult, playerSel, computerSel) {
     let gameP = document.createElement('p');
     let resultP = document.createElement('p');
     let scoreP = document.createElement('p');
     let gameOverP = document.createElement('p');
+    let playerSelSpan = document.createElement('span');
+    let computerSelSpan = document.createElement('span');
+    let resultSpan = document.createElement('span');
+    let gameOverSpan = document.createElement('span');
 
-    gameP.textContent = ('Player plays ' + playerSel + ', Computer plays ' + computerSel);
+    playerSelSpan.textContent = playerSel;
+    playerSelSpan.style.color = selColour(playerSel);
+    computerSelSpan.textContent = computerSel;
+    computerSelSpan.style.color = selColour(computerSel);
+    
+    gameP.innerHTML = ('Player plays ' + playerSelSpan.outerHTML + ', Computer plays ' + computerSelSpan.outerHTML);
     switch (gameResult) {
         case gameResult = 'win':
             resultP.textContent = 'Player wins!';
+            resultP.style.color = 'springgreen';
             playerScore += 1;
             scoreP.textContent = ('Player - ' + playerScore + ' | Computer - ' + computerScore);
             break; 
         case gameResult = 'draw':
             resultP.textContent = 'Draw!';
+            resultP.style.color = 'darkgoldenrod';
             scoreP.textContent = ('Player - ' + playerScore + ' | Computer - ' + computerScore);
             break;
         default:
             resultP.textContent = 'Computer wins!';
+            resultP.style.color = 'crimson';
             computerScore += 1;
             scoreP.textContent = ('Player - ' + playerScore + ' | Computer - ' + computerScore);
     }
@@ -79,12 +102,15 @@ const displayResults = function (gameResult, playerSel, computerSel) {
     if (gameCounter >= 5) {
         if (playerScore > computerScore) {
             gameOverP.textContent = 'Player is the winner!';
+            gameOverP.style.color = 'springgreen';
         }
         else if (playerScore == computerScore) {
             gameOverP.textContent = 'The game\'s a draw!';
+            gameOverP.style.color = 'darkgoldenrod';
         }
         else {
             gameOverP.textContent = 'Computer is the winner!';
+            gameOverP.style.color = 'crimson';
         }
         gameOverP.textContent += ' Press a button to play again'
         resultsContainer.appendChild(gameOverP);
